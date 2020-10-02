@@ -378,5 +378,16 @@ SELECT * FROM comments_by_video;
 
 Notice the row is now removed from the comments_by_video table, it's as simple as that.
 
-## 4. Wrapping up
+**✅ Step 4. BATCH CRUD Query**
+```
+BEGIN BATCH
+   INSERT INTO comments_by_video (videoid, commentid, userid, comment)VALUES(12345678-1234-1111-1111-111111111111, 
+494a3f00-e966-11ea-84bf-83e48ffdc8ac, 77777777-7777-7777-7777-777777777777, 'OMG that guy Patrick is such a geek!');
+   UPDATE comments_by_video SET comment = 'OMG that guy Patrick is on fleek' WHERE videoid = 08765309-1234-9999-9999-111111111111 
+AND commentid = 2db5a810-03f6-11eb-82a6-573dab2d21a5;
+APPLY BATCH;
+```
+
+![alt text](images/astra_batch_query.PNG)
+## 5. Wrapping up
 We've just scratched the surface of what you can do using DataStax Astra with Apache Cassandra. Go take a look at [DataStax for Developers](https://www.datastax.com/dev) to see what else is possible. There's plenty to dig into!
